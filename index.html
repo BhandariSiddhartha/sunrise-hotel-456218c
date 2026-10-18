@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Discover comfortable rooms, dining, amenities and special stays at Sunrise Hotels & Resorts.">
+  <meta name="theme-color" content="#14265E">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sunrise Hotels and Resorts</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">&#9728; Sunrise <span>Hotels</span></div>
+    <button id="menuBtn" aria-label="Menu">&#9776;</button>
+
+    <ul id="links">
+      <li><a href="#home" data-i18n="nHome">Home</a></li>
+      <li><a href="#about" data-i18n="nAbout">About</a></li>
+      <li><a href="#rooms" data-i18n="nRooms">Rooms</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#dining">Dining</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#offers">Offers</a></li>
+      <li><a href="#contact" data-i18n="nContact">Contact</a></li>
+      <li>
+        <select id="lang" aria-label="Language">
+          <option value="en">EN</option>
+          <option value="hi">&#2361;&#2367;&#2306;</option>
+          <option value="te">&#3108;&#3142;</option>
+        </select>
+      </li>
+      <li><a href="#" id="theme">&#127763;</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="wrap">
+      <h1 data-i18n="title">Sunrise Hotels &amp; Resorts</h1>
+      <p data-i18n="tag">Wake up to luxury. Every morning, a new beginning.</p>
+      <a href="#rooms" class="btn" data-i18n="book">Book Now</a>
+
+      <div class="bk">
+        <div>
+          <label for="ci">Check-in</label>
+          <input type="date" id="ci">
+        </div>
+
+        <div>
+          <label for="co">Check-out</label>
+          <input type="date" id="co">
+        </div>
+
+        <div>
+          <label for="gu">Guests</label>
+          <select id="gu">
+            <option>1</option>
+            <option selected>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5+</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="rt">Room type</label>
+          <select id="rt"></select>
+        </div>
+
+        <button class="btn" id="chk">Check Availability</button>
+      </div>
+
+      <div id="avail"></div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2 style="text-align: left;">Our Story</h2>
+        <p style="color: var(--mute); margin: 10px 0;">
+          Founded in 1998 on the golden coast, Sunrise Hotels &amp; Resorts began as a
+          20-room family guesthouse. Today we welcome guests from around the world
+          with warm Indian hospitality, modern comfort and unforgettable service.
+        </p>
+        <p style="color: var(--mute);">
+          &#128205; Minutes from the beach, airport, railway station and the city's
+          top attractions. Luxury, business and family-friendly stays under one roof.
+        </p>
+
+        <div class="awards">
+          <span>&#127942; Best Resort 2024</span>
+          <span>&#11088; 5-Star Rated</span>
+          <span>&#127807; Green Certified</span>
+          <span>&#10004; ISO 9001</span>
+        </div>
+      </div>
+
+      <div class="grid stats-grid">
+        <article class="card stat-card">
+          <span class="stat-icon" aria-hidden="true">&#128718;</span>
+          <div><b>120+</b><small>Rooms</small></div>
+        </article>
+        <article class="card stat-card">
+          <span class="stat-icon" aria-hidden="true">&#128522;</span>
+          <div><b>50k+</b><small>Happy guests</small></div>
+        </article>
+        <article class="card stat-card">
+          <span class="stat-icon" aria-hidden="true">&#127869;</span>
+          <div><b>3</b><small>Restaurants</small></div>
+        </article>
+        <article class="card stat-card">
+          <span class="stat-icon" aria-hidden="true">&#127958;</span>
+          <div><b>5 min</b><small>To beach</small></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="rooms" style="background: var(--card);">
+    <div class="wrap">
+      <h2 data-i18n="nRooms">Rooms &amp; Suites</h2>
+      <p class="sub">Choose the stay that fits you</p>
+      <div class="grid" id="roomGrid"></div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="wrap">
+      <h2>Amenities &amp; Services</h2>
+      <p class="sub">Everything for a perfect stay</p>
+      <div
+        class="grid"
+        style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));"
+        id="amGrid"
+      ></div>
+    </div>
+  </section>
+
+  <section id="dining" style="background: var(--card);">
+    <div class="wrap" style="max-width: 760px;">
+      <h2>Restaurant &amp; Dining</h2>
+      <p class="sub">
+        &#128338; Breakfast 7&#8211;10 AM &#183; Lunch 12&#8211;3 PM
+        &#183; Dinner 7&#8211;11 PM
+      </p>
+
+      <div class="tabs" id="tabs"></div>
+      <div id="menu"></div>
+
+      <div style="text-align: center; margin-top: 22px;">
+        <button class="btn o" id="tbl">Reserve a Table</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <h2>Gallery</h2>
+      <p class="sub">A glimpse of Sunrise</p>
+      <div class="gal" id="galGrid"></div>
+    </div>
+  </section>
+
+  <section id="reviews" style="background: var(--card);">
+    <div class="wrap">
+      <h2>Guest Reviews</h2>
+      <p class="sub">
+        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        4.8 / 5 from 2,400+ reviews &#183;
+        <a
+          href="https://www.tripadvisor.com"
+          target="_blank"
+          rel="noopener"
+          style="color: var(--gold);"
+        >Tripadvisor</a>
+        &#183;
+        <a
+          href="https://www.google.com/maps"
+          target="_blank"
+          rel="noopener"
+          style="color: var(--gold);"
+        >Google Reviews</a>
+      </p>
+
+      <div class="grid review-grid">
+        <article class="card review-card">
+          <div class="review-head">
+            <img class="review-avatar" src="https://api.dicebear.com/9.x/adventurer/svg?seed=Priya" alt="Illustrated profile avatar for Priya S." loading="lazy">
+            <div class="review-person"><b>Priya S.</b><small>Family vacation</small></div>
+            <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p>"Stunning sea view and the friendliest staff. Breakfast buffet was superb!"</p>
+        </article>
+
+        <article class="card review-card">
+          <div class="review-head">
+            <img class="review-avatar" src="https://api.dicebear.com/9.x/adventurer/svg?seed=Rahul" alt="Illustrated profile avatar for Rahul M." loading="lazy">
+            <div class="review-person"><b>Rahul M.</b><small>Family vacation</small></div>
+            <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <p>"Perfect for our family vacation. Kids loved the pool and the rooms were spotless."</p>
+        </article>
+
+        <article class="card review-card">
+          <div class="review-head">
+            <img class="review-avatar" src="https://api.dicebear.com/9.x/adventurer/svg?seed=Daniel" alt="Illustrated profile avatar for Daniel K." loading="lazy">
+            <div class="review-person"><b>Daniel K.</b><small>Business stay</small></div>
+            <div class="stars" aria-label="4 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+          </div>
+          <p>"Great business facilities and fast Wi-Fi. Airport pickup was seamless."</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="offers">
+    <div class="wrap">
+      <h2>Offers &amp; Packages</h2>
+      <p class="sub">Special deals just for you</p>
+
+      <div class="grid">
+        <div class="offer">
+          <b>20% OFF</b>
+          <h3>Weekend Escape</h3>
+          <p>Fri&#8211;Sun stays with free breakfast.</p>
+        </div>
+
+        <div class="offer">
+          <b>Honeymoon</b>
+          <h3>Romance Package</h3>
+          <p>Candlelight dinner, flowers &amp; spa for two.</p>
+        </div>
+
+        <div class="offer">
+          <b>Festival</b>
+          <h3>Celebrate Big</h3>
+          <p>Up to 30% off during festival season.</p>
+        </div>
+
+        <div class="offer">
+          <b>Corporate</b>
+          <h3>Business Plan</h3>
+          <p>Meeting hall, Wi-Fi &amp; discounted rates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="background: var(--card);">
+    <div class="wrap">
+      <h2 data-i18n="nContact">Contact &amp; Location</h2>
+      <p class="sub">We'd love to hear from you</p>
+
+      <div class="two">
+        <div>
+          <div class="mapbox">
+            <iframe
+              title="Map search for Sunrise Hotels on Beach Road"
+              src="https://maps.google.com/maps?q=Sunrise+Hotels+Beach+Road&amp;z=14&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <div class="mapbox-label">
+              <span>Sunrise Hotels, Beach Road</span>
+              <a
+                class="btn mapbox-link"
+                target="_blank"
+                rel="noopener"
+                href="https://www.google.com/maps/search/?api=1&amp;query=Sunrise+Hotels+Beach+Road"
+              >Open in Google Maps</a>
+            </div>
+          </div>
+
+          <p>
+            &#9992; Airport &#8212; 18 km &#183; &#128646; Railway station &#8212; 6 km<br>
+            &#127963; Old Fort &#8212; 4 km &#183; &#127958; Beach &#8212; 0.5 km
+          </p>
+
+          <p style="margin-top: 10px;">
+            &#128222; +91 90004 84626<br>
+            &#9993; info@sunrisehotels.com<br>
+            &#127760; Instagram &#183; Facebook &#183; X &#183; YouTube
+          </p>
+        </div>
+
+        <form id="cf">
+          <div style="margin-bottom: 10px;">
+            <label for="contactName">Name</label>
+            <input id="contactName" required>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label for="contactEmail">Email</label>
+            <input id="contactEmail" type="email" required>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" rows="4" required></textarea>
+          </div>
+
+          <button class="btn">Send Message</button>
+          <span id="cfm"></span>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fg">
+      <div>
+        <h4>&#9728; Sunrise Hotels</h4>
+        <p style="font-size: 0.9rem;">Wake up to luxury, every morning.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#rooms">Rooms</a>
+        <a href="#dining">Dining</a>
+        <a href="#offers">Offers</a>
+      </div>
+
+      <div>
+        <h4>Policies</h4>
+        <a data-pol="Privacy Policy">Privacy Policy</a>
+        <a data-pol="Terms &amp; Conditions">Terms &amp; Conditions</a>
+        <a data-pol="Cancellation Policy">Cancellation Policy</a>
+      </div>
+
+      <div>
+        <h4>Follow Us</h4>
+        <a>Instagram</a>
+        <a>Facebook</a>
+        <a>YouTube</a>
+      </div>
+    </div>
+
+    <div class="copy">
+      &#169; 2026 Sunrise Hotels and Resorts. All rights reserved.
+    </div>
+  </footer>
+
+  <a
+    class="wa"
+    href="https://wa.me/919000484626"
+    target="_blank"
+    rel="noopener"
+    aria-label="WhatsApp"
+  >&#128172;</a>
+
+  <button id="chatBtn" aria-label="Chat">&#129302;</button>
+
+  <div id="chat">
+    <header>Sunrise Assistant</header>
+    <div id="msgs"></div>
+
+    <form id="cform">
+      <input id="cin" aria-label="Ask Sunrise Assistant" placeholder="Ask about rooms, food, check-in&#8230;" autocomplete="off">
+      <button class="btn" style="padding: 8px 14px;">&#10148;</button>
+    </form>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="mbox" id="mbox"></div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
